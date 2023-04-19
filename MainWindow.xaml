@@ -1,0 +1,39 @@
+﻿<Window x:Class="Practicheskaya_6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practicheskaya_6"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="850" FontSize="20">
+    <Grid Background="BurlyWood" Margin="0,0,10,-6">
+        <Button Content="Создать файл xml" HorizontalAlignment="Left" Margin="10,293,0,0" VerticalAlignment="Top" Height="31" Width="205" Click="Button_Click"/>
+        <Menu Height="20" VerticalAlignment="Top">
+            <MenuItem Header="Edit" FontSize="14">
+                <MenuItem Header="Повысить зарплату на 15%" Click="RaiseSalary_Click"/>
+            </MenuItem>
+        </Menu>
+        <DataGrid x:Name="dataGrid1" HorizontalAlignment="Left" Height="460" Margin="231,20,0,0" VerticalAlignment="Top" Width="609" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" FontSize="15">
+        </DataGrid>
+        <TreeView x:Name="treeView1" HorizontalAlignment="Left" Height="249" Margin="0,20,0,0" VerticalAlignment="Top" Width="231">
+            <TreeViewItem Header="ОАО Лучшие кодеры" FontSize="14">
+                <TreeViewItem Header="Dep1">
+                    <TreeViewItem Header="Dep4" MouseDoubleClick="doubleClick1"/>
+                    <TreeViewItem Header="Dep5" MouseDoubleClick="doubleClick2"/>
+                    <TreeViewItem Header="Dep6" MouseDoubleClick="doubleClick3"/>
+                </TreeViewItem>
+                <TreeViewItem Header="Dep2">
+                    <TreeViewItem Header="Dep7" MouseDoubleClick="doubleClick4"/>
+                    <TreeViewItem Header="Dep8" MouseDoubleClick="doubleClick5"/>
+                    <TreeViewItem Header="Dep9" MouseDoubleClick="doubleClick6"/>
+                </TreeViewItem>
+                <TreeViewItem Header="Dep3">
+                    <TreeViewItem Header="Dep10" MouseDoubleClick="doubleClick7"/>
+                    <TreeViewItem Header="Dep11" MouseDoubleClick="doubleClick8"/>
+                    <TreeViewItem Header="Dep12" MouseDoubleClick="doubleClick9"/>
+                </TreeViewItem>
+            </TreeViewItem>
+        </TreeView>
+        <Button Content="Показать все данные" HorizontalAlignment="Left" Height="34" Margin="10,346,0,0" VerticalAlignment="Top" Width="205" Click="Button_Click_1"/>
+    </Grid>
+</Window>
