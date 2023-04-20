@@ -33,31 +33,13 @@ namespace Practicheskaya_6
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Employee[] employee = new Employee[] //создание работников
+            List<Employee> employee = new List<Employee>();//создание работников
+            for(int i = 0; i < 200; i++)
             {
-                new Employee(1,"Никита Порошин Сергеевич", 18, "Admin", 10, 20000),
-                new Employee(2,"Работник Работников Работникович1", 30, "Employee", 11, 1300),
-                new Employee(3,"Работник Работников Работникович2", 41, "Employee", 12, 1400),
-                new Employee(4,"Интерн Интернов Интернович1", 20, "Intern", 4, 500),
-                new Employee(5,"Работник Работников Работникович3", 34, "Employee", 5, 1350),
-                new Employee(6,"Работник Работников Работникович4", 29, "Employee", 6, 1500),
-                new Employee(7,"Интерн Интернов Интернович2", 19, "Intern", 7, 500),
-                new Employee(8,"Работник Работников Работникович5", 42, "Employee", 8, 1600),
-                new Employee(9,"Начальник Начальников Начальникович1", 51, "Nachalnik", 9, 3000),
-                new Employee(10,"Работник Работников Работникович6", 27, "Employee", 10, 1700),
-                new Employee(11,"Работник Работников Работникович7", 34, "Employee", 11, 1400),
-                new Employee(12,"Работник Работников Работникович8", 24, "Employee", 12, 1540),
-                new Employee(13,"Работник Работников Работникович9", 22, "Employee", 4, 1900),
-                new Employee(14,"Работник Работников Работникович10", 37, "Employee", 4, 1800),
-                new Employee(15,"Начальник Начальников Начальникович2", 46, "Nachalnik", 5, 4200),
-                new Employee(16,"Начальник Начальников Начальникович3", 52, "Nachalnik", 6, 3900),
-                new Employee(17,"Работник Работников Работникович11", 29, "Employee", 7, 1950),
-                new Employee(18,"Начальник Начальников Начальникович4", 38, "Nachalnik", 8, 3100),
-                new Employee(19,"Интерн Интернов Интернович3", 18, "Intern", 9, 500),
-                new Employee(20,"Работник Работников Работникович12", 32, "Employee", 10, 1750),
-            };
+                employee.Add(new Employee(i + 1));
+            }
 
-            XmlSerializer xml = new XmlSerializer(typeof(Employee[]));//указание типа
+            XmlSerializer xml = new XmlSerializer(typeof(List<Employee>));//указание типа
 
             FileStream fs = new FileStream($@"{path}/depart1.xml", FileMode.OpenOrCreate);//указание пути до xml файла
             xml.Serialize(fs, employee);//сериализация
@@ -93,10 +75,10 @@ namespace Practicheskaya_6
 
         private void Button_Click_1(object sender, RoutedEventArgs e)//выводит работников с нужным номером отдела
         {
-            XmlSerializer xml = new XmlSerializer(typeof(Employee[]));//Указание типа
+            XmlSerializer xml = new XmlSerializer(typeof(List<Employee>));//Указание типа
             FileStream fs = new FileStream($@"{path}/depart1.xml", FileMode.OpenOrCreate);//указание пути до xml файла
 
-            Employee[] emp1 = xml.Deserialize(fs) as Employee[];//создание массива для всех работников
+            List<Employee> emp1 = xml.Deserialize(fs) as List<Employee>;//создание массива для всех работников
             List<Employee> test = new List<Employee>();
             foreach (Employee emp in emp1)//запись всех работников в List
                     test.Add(emp);//добавление каждого работника в List
@@ -112,6 +94,7 @@ namespace Practicheskaya_6
     }
     public class Employee//создание класса работника
     {
+        static Random rnd = new Random();
         public int ID { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
@@ -119,14 +102,36 @@ namespace Practicheskaya_6
         public int NumDep { get; set; }
         public int Salary { get; set; }
         public Employee() { }
-        public Employee(int id, string name, int age, string position, int numDep, int salary)
+        public Employee(string name, int age, string position, int numDep, int salary)
+        {
+            if (name == "1")
+                Name = "Начальник Начальниковов Начальникович" + rnd.Next(1,1000);
+            else if (name == "2")
+                Name = "Работник Работников Работникович" + rnd.Next(1, 1000);
+            else if(name == "3")
+                Name = "Интерн Интернов Интернович" + rnd.Next(1, 1000);
+
+            Age = age;
+
+            if (name == "1")
+                Position = "Nachalnik";
+            else if (name == "2")
+                Position = "Employee";
+            else if(name=="3")
+                Position = "Intern";
+
+            NumDep = numDep;
+
+            if (name == "1")
+                Salary = rnd.Next(3000, 5000);
+            else if (name == "3")
+                Salary = 500;
+            else
+                Salary = salary;
+        }
+        public Employee(int id) : this((string)Convert.ToString(rnd.Next(1, 4)), (int)rnd.Next(20, 60), (string)Convert.ToString(rnd.Next(1,4)), (int)rnd.Next(4,13), (int)rnd.Next(1300, 2000))
         {
             ID = id;
-            Name = name;
-            Age = age;
-            Position = position;
-            NumDep = numDep;
-            Salary = salary;
         }
     }
 }

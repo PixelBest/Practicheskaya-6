@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="850" FontSize="20">
     <Grid Background="BurlyWood" Margin="0,0,10,-6">
-        <Button Content="Создать файл xml" HorizontalAlignment="Left" Margin="10,293,0,0" VerticalAlignment="Top" Height="31" Width="205" Click="Button_Click"/>
+        <Button Content="Создать файл xml" HorizontalAlignment="Left" Margin="10,308,0,0" VerticalAlignment="Top" Height="31" Width="205" Click="Button_Click"/>
         <Menu Height="20" VerticalAlignment="Top">
             <MenuItem Header="Edit" FontSize="14">
                 <MenuItem Header="Повысить зарплату на 15%" Click="RaiseSalary_Click"/>
@@ -34,6 +34,6 @@
                 </TreeViewItem>
             </TreeViewItem>
         </TreeView>
-        <Button Content="Показать все данные" HorizontalAlignment="Left" Height="34" Margin="10,346,0,0" VerticalAlignment="Top" Width="205" Click="Button_Click_1"/>
+        <Button Content="Показать все данные" HorizontalAlignment="Left" Height="34" Margin="10,376,0,0" VerticalAlignment="Top" Width="205" Click="Button_Click_1"/>
     </Grid>
 </Window>
